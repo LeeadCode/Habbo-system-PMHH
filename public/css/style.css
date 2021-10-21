@@ -1,0 +1,56 @@
+h2{
+    font-family: impact, fantasy;
+}
+
+.body, html{
+    height: 100%;
+    
+}
+
+.mainBg{
+    background-image: url('../img/fundo2.png');
+    background-size: cover;
+    background-position: bottom center;
+    size: 100vh;
+}
+
+.espacamentoUp{
+    padding-top: 10px;
+}
+
+.espacamentoDown{
+    padding-bottom: 10px;
+}
+
+.inputBusca{
+    width: 50%;
+    padding-left: 100%;
+}
+
+
+.alerta {
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    background-color: red;
+   }
+   .error {
+    border-color: #e8273b;
+    color: #FFF;
+    background-color: #ed5565;
+   }
+   .sucesso {
+    border-color: #87c940;
+    color: #FFF;
+    background-color: #a0d468;
+   }
+   .atencao {
+    border-color: #f4a911;
+    color: #FFF;
+    background-color: #f6bb42;
+   }
+   .info {
+    border-color: #2f80e7;
+    color: #FFF;
+    background-color: #5d9cec;
+   }

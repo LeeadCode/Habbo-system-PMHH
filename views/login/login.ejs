@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+<body class="mainBg">
+  
+  <div class="container-fluid col-md-3 col-md-offset-2" style="padding-top: 8rem;">
+    <div class="card mt-4" style="width: 30rem;">
+      <div class="sucesso text-center"><%= sucesso %></div>
+      <div class="alerta"><%= erro %></div>
+      <img src="https://i.servimg.com/u/f70/19/94/30/02/capa4110.jpg" alt="">
+      <div class="card-header">
+        <h2 class="text-center">Login</h2>
+      </div>
+
+      <div class="card-body">
+        <form action="/login/validacao" method="post" name="formulario">
+
+          <label for="login">Login:</label>
+          <input type="text" class="form-control mt-1" name="login" placeholder="Seu login aqui" required>
+          
+          <label for="senha" class="mt-1">Senha:</label>
+          <input type="password" class="form-control mt-1" name="senha" placeholder="Sua senha aqui" required>
+         
+          <button type="submit" class="form-control mt-2 btn-primary btn" onclick="validar()">Logar</button>
+        </form>
+        <a href="/cadastro" class="btn btn-dark form-control mt-3">Cadastrar Usuário</a>
+        <div class="mt-2 text-center text-monospace">Desenvolvido por LeaD' (oxigoraxo57)</div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  function validar(){
+    var login = formulario.login
+    var senha = formulario.senha
+
+    if(login.value.trim() == '' || login.value.trim().length < 3){
+      alert('Login inválido!')
+      login.select()
+      login.focus()
+      return
+    }
+    if(senha.value.trim() == '' || senha.value.trim().length < 3){
+      alert('Senha inválida!')
+      senha.select()
+      senha.focus()
+      return
+    }
+  }
+</script>
+
+
+<%- include('../partials/footer.ejs') %>

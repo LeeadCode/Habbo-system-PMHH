@@ -1,0 +1,110 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<body>
+<div class="container espacamentoUp">
+    <select class="mb-2" style="float: right;" aria-label="Default select example" onchange="window.location=this.options[this.selectedIndex].value">
+        <option value="">Visualizar</option>
+        <option value="/lista/cadastro/Pendente">Pendente</option>
+        <option value="/lista/cadastro/Aprovado">Aprovado</option>
+        <option value="/lista/cadastro/Rejeitado">Rejeitado</option>
+      </select>
+
+    <h2 class="text-center">Requerimentos de Cadastros <%= status+'s' %> </h2>
+    <div>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr style="justify-content: space-between;">
+                <th>Nick:</th>
+                <th>Patente:</th>
+                <th>Tipo:</th>
+                <th>Status:</th>
+                <th>Responsável:</th>
+                <th>Ação:</th>
+                <% if(status != 'Pendente'){ %>
+                <th>Atualizado por:</th>
+                <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% requerimento.forEach(requerimento => { %>
+                <tr>
+                    <th><%= requerimento.nick %></th>
+                    <th><%= requerimento.patente %></th>
+                    <th><%= requerimento.tipo %></th>
+                    <th><%= requerimento.status %></th>
+                    <th><%= requerimento.requerente.nick %></th>
+                    <th style="display: flex; position: relative; justify-content: center; gap: 1rem;">
+                        
+                        <% if(status == 'Pendente'){ %>
+                        <form action="/requerimento/aprovado" method="post"><button class="btn btn-success">Aprovar</button>
+                            <input type="hidden" name="id" value="<%= requerimento.id %>">
+                        </form>
+
+                        <form action="/requerimento/rejeitado" method="post"><button class="btn btn-danger">Rejeitar</button>
+                            <input type="hidden" name="id" value="<%= requerimento.id %>">
+                        </form>
+                        <% } %>
+
+                        <button class="btn btn-primary" onclick="showHide('<%= requerimento.id %>')">Visualizar</button>
+
+                    <% if(status != 'Pendente'){ %>
+                    <th><%= requerimento.srh.nick %></th>
+                    <% } %>
+                    </th>
+                    
+                </tr>
+                <div id="<%= requerimento.id %>" style="display:none;">
+                    <h1 class="text-center"> Detalhes: </h1>
+                    <p class="text-center"><b>Cadastro:</b> <%= requerimento.nick +' ['+ requerimento.requerente.tag +'] '+ requerimento.data %>
+                        <button class="btn btn-outline-dark btn-sm" onclick="copyToClipBoard('<%= requerimento.nick %>')"> Copiar! </button>
+                        <input type="text" id="<%= requerimento.nick %>" disabled hidden value="<%= requerimento.nick +' ['+ requerimento.requerente.tag +'] '+ requerimento.data %>">
+                    </p>
+                    <hr>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <!-- Cadastou -->
+                        <div >
+                            <div>
+                                <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= requerimento.requerente.nick %>&direction=2&head_direction=2&size=l&action=std" alt="">
+                            </div>
+                            <p><b>Nick:</b> <%= requerimento.requerente.nick %></p>
+                            <p><b>Patente:</b> <%= requerimento.requerente.patente %></p>
+                            <p><b>Tag:</b> <%= requerimento.requerente.tag %></p>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary" onclick="showHide('<%= requerimento.id %>')">Fechar Visualização</button>
+                            <p style="font-size: 10rem;">></p>
+                        </div>
+
+                        <!-- Cadastrado -->
+                        <div>
+                            <div>
+                                <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= requerimento.nick %>&direction=2&head_direction=2&size=l&action=std" alt="">
+                            </div>
+                            <p><b>Nick:</b> <%= requerimento.nick %></p>
+                            <p><b>Patente:</b> <%= requerimento.patente %></p>
+                            <p><a class="btn btn-primary" href="https://www.habbo.com.br/profile/<%= requerimento.nick %>" target="_blank">Visualizar Perfil</a></p>
+                        </div>
+                    </div>
+                </div>
+            <%})%>
+        </tbody>
+    </table>
+</div>
+</body>
+
+<script>
+	function showHide(nome){
+	if(document.getElementById(nome).style.display=='none'){
+	document.getElementById(nome).style.display=''
+	}else{
+	document.getElementById(nome).style.display='none'
+	}}
+
+  async function copyToClipBoard(nome) {
+  let text = document.getElementById(nome).value;
+  await navigator.clipboard.writeText(text);
+}
+</script>
+<%- include('../../partials/footer.ejs') %>

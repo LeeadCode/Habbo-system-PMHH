@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+
+<div class="container espacamentoUp">
+    <div class="card">
+        <% if(InvalidArgument){ %>
+            <div class="alerta error">Erro nos campos!</div>
+        <%}%>
+    <div class="card-header">
+        <h2>Requerimento de promoção</h2>
+    </div>
+        <div class="card-body">
+            <form method="POST" action="/categories/save">
+                <label for="nick">Nick:</label>
+                <input class="form-control" type="text" name='nick' disabled value="teste">
+
+                <label for="patenteAntiga" class="espacamentoUp">Patente antiga:</label>
+                <input class="form-control" type="text" name='patenteAntiga' disabled value="teste">
+
+                <label for="patente" class="espacamentoUp">Nova Patente:</label>
+                <select name="patente" class="form-select">
+                  <option value="soldado">Soldado</option>
+                  <option value="cabo">Cabo</option>
+                  <option value="3sargento">3° Sargento</option>
+                  <option value="2sargento">2° Sargento</option>
+                  <option value="1sargento">1° Sargento</option>
+                  <option value="subtenente">Subtnente</option>
+                  <option value="cadete">Cadete</option>
+                </select>
+
+                <label for="motivo" class="espacamentoUp">Motivos:</label>
+                <textarea class="form-control" name="motivo" placeholder="Motivos para a promoção:"></textarea>
+
+                <div class="espacamentoDown"></div>
+                <button class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

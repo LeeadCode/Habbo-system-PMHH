@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+    <main role="container py-4">
+
+      <div class="container p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+         <div><img style="float: left;" class="inline" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= usuario.nick %>&direction=2&head_direction=2&size=l&action=std" alt=""></div>
+          <h1 class="display-5 fw-bold">Olá, <%= usuario.nick %></h1>
+          <p class="col-md-8 fs-4">Veja as principais notícias que andam rolando pela PMHH!</p>
+          <p><a class="btn btn-primary btn-lg" href="#" type="button">Se atualize! »</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Última promoção!</h2>
+            <p><img style="float: left;" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= usuario.nick %>&direction=2&head_direction=2&size=m&action=std" alt=""> 
+               <b><%= usuario.nick %></b> Foi promovido por <%= usuario.nick %>, continue demonstrando um ótimo serviço e que todos tenham você como um exemplo! <br> 
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Praça Destaque!</h2>
+            <p><img style="float: left;" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= usuario.nick %>&direction=2&head_direction=2&size=m&action=std" alt="">
+               Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">Outros destaques »</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Oficial Destaque!</h2>
+            <p><img style="float: left;" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=<%= usuario.nick %>&direction=2&head_direction=2&size=m&action=std" alt="">
+               Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">Outros destaques »</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> 
+
+    </main>
+
+    <footer class="container">
+      <p>© Volta GMA!</p>
+    </footer>
+<%- include('partials/footer.ejs') %>

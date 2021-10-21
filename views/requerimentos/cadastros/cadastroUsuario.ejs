@@ -1,0 +1,43 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/navbar.ejs') %>
+
+<div class="container espacamentoUp">
+  <div class="alerta text-center"><%= erro %></div>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center">Requerimento de Alistamento</h2>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="/cadastro/save" name="formulario">
+        <label for="nick">Nick:</label>
+        <input class="form-control" type="text" name="nick" required />
+        <label for="patente" class="espacamentoUp">Patente / Cargo:</label>
+        <select name="patente" class="form-select">
+          <option value="Soldado">Soldado</option>
+          <option value="Agente">Agente</option>
+        </select>
+
+        <div class="espacamentoDown"></div>
+        <button class="btn btn-primary form-control" onclick="validar()">
+          Cadastrar
+        </button>
+
+        <input type="text" name="fkid" value="<%= fkid %>" disabled hidden />
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validar() {
+    var nick = formulario.nick
+
+    if (nick.value.trim() == '' || nick.value.trim().length < 3) {
+      alert('nick inválido!')
+      nick.select()
+      nick.focus()
+      return
+    }
+  }
+</script>
+<%- include('../../partials/footer.ejs') %>

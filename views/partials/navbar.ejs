@@ -1,0 +1,27 @@
+<header class="py-3 mb-3 border-bottom bg-dark">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <div>
+            <img class="imagem" onclick="openNav()" style="padding-left: 80px; width: 145px;" src="https://www.habbo.com.br/habbo-imaging/badge/b08124s36044s90115s93113s400148e11357607940f563ff18e1c32070e4c.gif" alt="">
+        </div>
+        <div class="d-flex align-items-center" style="width: 50%;">
+            <form class="w-100 me-3" action="">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar Usuário" aria-label="Buscar Usuário" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secundary btn-primary" type="button" id="button-addon2">Buscar!</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+<%- include('sidebar.ejs') %>
+
+<style>
+    .imagem{
+        transition: 0.5s;
+    }
+    .imagem:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+</style>
